@@ -1,8 +1,8 @@
 # exclude everything archive windows .ini
 *.ini
 # exclude everything directory .vim/plugged
-.vim/plugged/**
+vim/.vim/plugged/**
 # exclude everything directory .vim/pack
-.vim/pack/**
+vim/.vim/pack/**
 #**/plugged/**
 ssh_config/**
