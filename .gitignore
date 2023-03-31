@@ -5,4 +5,9 @@ vim/.vim/plugged/**
 # exclude everything directory .vim/pack
 vim/.vim/pack/**
 #**/plugged/**
-ssh_config/**
+# configuracion de ssh
+ssh/**
+*/id_rsa
+*/id_rsa.pub
+*/known_hosts
+*/known_hosts.old
