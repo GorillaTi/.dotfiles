@@ -6,8 +6,6 @@ vim/.vim/plugged/**
 vim/.vim/pack/**
 #**/plugged/**
 # configuracion de ssh
-ssh/**
-*/id_rsa
-*/id_rsa.pub
-*/known_hosts
-*/known_hosts.old
+ssh/
+ssh/*
+ssh/.ssh/*
