@@ -1,5 +1,3 @@
-# .dotfiles
-
 # Mis .dotfiles
 
 ## Instalación
