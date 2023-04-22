@@ -56,6 +56,13 @@ nnoremap <C-j> 10<C-e>
 nnoremap <C-k> 10<C-y>
 nnoremap <Leader>s <Plug>(easymotion-s2)
 
+" Navigation with guides
+inoremap ;gui <++>
+inoremap ,, <Esc>/<++><Enter>"_c4l
+vnoremap ,, <Esc>/<++><Enter>"_c4l
+nnoremap ,, <Esc>/<++><Enter>"_c4l
+
+
 " Tab Bar
 " Move to previous/next
 nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
@@ -153,6 +160,9 @@ endfunction
 nnoremap <C-t> :call OpenTerminal()<CR>
 noremap <leader>tv :botright vnew <Bar> :terminal<cr>
 noremap <leader>th :botright new <Bar> :terminal<cr>
+
+" Add template to current buffer
+nnoremap ,sh :-1read $HOME/.vim/templates/template.sh<CR>
 
 " exit mode
 :imap ii <Esc>
