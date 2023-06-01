@@ -96,6 +96,7 @@ nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
 "                          :BufferCloseBuffersRight
 " Magic buffer-picking mode
 nnoremap <silent> <C-p>    <Cmd>BufferPick<CR>
+nnoremap <silent> <C-p>    <Cmd>BufferPickDelete<CR>
 " Sort automatically by...
 nnoremap <silent> <Space>bb <Cmd>BufferOrderByBufferNumber<CR>
 nnoremap <silent> <Space>bd <Cmd>BufferOrderByDirectory<CR>

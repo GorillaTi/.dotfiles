@@ -7,11 +7,15 @@
 "let g:gruvbox_contrast_dark = 'hard'   
 
 " PaperColor
-set background=dark
-colorscheme PaperColor
-let g:PaperColor_Theme_Options = { 'theme': { 'default.dark': { 'transparent_background': 1 } } }
+"set background=dark
+"colorscheme PaperColor
+"let g:PaperColor_Theme_Options = { 'theme': { 'default.dark': { 'transparent_background': 1 } } }
+
 " Nightfox (nightfox,dayfox,dawnfox,duskfox,nordfox,terafox,carbonfox)
 "colorscheme nightfox 
+
+" Monokai.vim
+colorscheme monokai
 
 " ---------------------------------------------------------------------------------------------------------------
 " StatusBar config
