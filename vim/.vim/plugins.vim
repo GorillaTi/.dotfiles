@@ -15,14 +15,14 @@ Plug 'leafgarland/typescript-vim' "TypeScript syntax
 Plug 'stephpy/vim-yaml', {'for': 'yaml'} "YAML
 Plug 'godlygeek/tabular' "For markdown syntax
 Plug 'preservim/vim-markdown' "For markdown syntax
-#Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'} " For ansible.
-#Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'} " For Nginx server lenguaje.
-# Inside the Vim-Plug block on your .vimrc
+"Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'} " For ansible.
+"Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'} " For Nginx server lenguaje.
+" Inside the Vim-Plug block on your .vimrc
 Plug 'ekalinin/Dockerfile.vim' " Vim syntax file for Docker's Dockerfile and snippets for snipMate.
 
 " Nvim Tree
-#Plug 'nvim-tree/nvim-web-devicons' " Icons.
-#Plug 'nvim-tree/nvim-tree.lua' " Nvim tree file explorer in lua.
+"Plug 'nvim-tree/nvim-web-devicons' " Icons.
+"Plug 'nvim-tree/nvim-tree.lua' " Nvim tree file explorer in lua.
 
 " Tab Bar
 Plug 'lewis6991/gitsigns.nvim' " OPTIONAL: for git status
@@ -66,13 +66,13 @@ Plug 'christoomey/vim-tmux-navigator' " Navegacion entre ventanas
 Plug 'neoclide/coc.nvim', {'branch' : 'release'} " Intalar autocompletado conforme al lenguaje utilizado.
 
 " Test
-#Plug 'tyewang/vimux-jest-test'
-#Plug 'janko-m/vim-test'
+"Plug 'tyewang/vimux-jest-test'
+"Plug 'janko-m/vim-test'
 
 " IDE
 Plug 'editorconfig/editorconfig-vim'
-#Plug 'junegunn/fzf'
-#Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf'
+"Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/remote', 'do': ':UpdateRemotePlugins' }
 Plug 'terryma/vim-multiple-cursors'
