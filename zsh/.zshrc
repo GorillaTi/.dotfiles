@@ -16,6 +16,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -118,17 +119,17 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 # Custon Aliases
+# Configuration bat
 alias cat="/usr/bin/bat"
 alias catn="/usr/bin/cat"
 alias catnl="/usr/bin/cat --paging=never"
 
+# Configuration lsd
 alias l='lsd -l --group-dirs=first'
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
@@ -144,10 +145,6 @@ alias vimconfigplugconf='vim ~/.vim/plugins-config.vim'
 alias vimconfigmap='vim ~/.vim/maps.vim'
 alias p10kconfig='vim ~/.p10k.zsh'
 alias sshconfig='vim ~/.ssh/config'
-       
-#alias osupgrade='sudo apt update && sudo apt dist-upgrade -y'
-alias osupgrade='sudo dnf upgrade -y ; flatpak update -y'
-#alias osclear='sudo apt autoremove -y && sudo apt autoclean'
        
 # Cleaning DNS cache
 alias dns-clear='sudo systemd-resolve --flush-cache'
@@ -167,7 +164,7 @@ alias update-fonts='sudo fc-cache -fv'
 #Sesion Tmux
 alias tmuxsesion='tmux new -t tmux1'
 
-# Plugins
+# Custom Plugins
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -182,27 +179,60 @@ zstyle ':completion:*' menu select
 
 fpath+=~/.zfunc
 
-#Function
-# add this to easily extract compressed files, use extract <filename> to extract 
+# Functions
+# Add this to easily extract compressed files, use extract <filename> to extract 
 extract () {
 	if [ -f $1  ] ; then
 		case $1 in
-			*.tar.bz2)	tar xvjf $1    ;;
-                        *.tar.gz)       tar xvzf $1    ;;
-                        *.tar.xz)       tar xf $1      ;;
-                        *.bz2)          bunzip2 $1     ;;
-                        *.rar)          unrar x $1     ;;
-                        *.gz)           gunzip $1      ;;
-                        *.tar)          tar xvf $1     ;;
-                        *.tbz2)         tar xvjf $1    ;;
-                        *.tgz)          tar xvzf $1    ;;
-                        *.zip)          unzip $1       ;;
-                        *.Z)            uncompress $1  ;;
-                        *.7z)           7z x $1        ;;
-                        *.zpaq)         zpaq x $1        ;;
-                        *)        echo "don't know how to extract '$1'..." ;;
+			*.tar.bz2)	    tar xvjf $1    ;;
+      *.tar.gz)       tar xvzf $1    ;;
+      *.tar.xz)       tar xf $1      ;;
+      *.bz2)          bunzip2 $1     ;;
+      *.rar)          unrar x $1     ;;
+      *.gz)           gunzip $1      ;;
+      *.tar)          tar xvf $1     ;;
+      *.tbz2)         tar xvjf $1    ;;
+      *.tgz)          tar xvzf $1    ;;
+      *.zip)          unzip $1       ;;
+      *.Z)            uncompress $1  ;;
+      *.7z)           7z x $1        ;;
+      *.zpaq)         zpaq x $1      ;;
+      *)              echo "don't know how to extract '$1'..." ;;
 		esac
-        else
-          echo "'$1' is not a valid file!";
-        fi
-      }
+  else
+		echo "'$1' is not a valid file!";
+	fi
+}
+
+# Add this for update Operating System
+# alias os-upgrade='sudo apt update && sudo apt dist-upgrade -y'
+os-upgrade () {
+	declare -a os_distro=( "Fedora" "RedHat" "CenOS" "AlmaLinux" "RockiLinux" "Debian" "Ubuntu" );
+	for i in ${os_distro[@]}; do
+		local distro=$(cat /etc/*-release | grep "NAME" | grep -o -m1 -i "$i");
+		if [ ! -z "$distro" ]; then
+			os=$distro;
+  		echo "Sistema Operativo indetificado como: $os"
+			break;
+		fi
+  done
+  case $os in
+		Fedora | RedHat | CenOS | AlmaLinux | RockiLinux)
+			sudo dnf upgrade -y; 
+		;;
+		Debian | Ubuntu)
+			sudo apt upgrade;
+			sudo apt dist-upgrade -y;
+		;;
+		*)
+			echo "Sistema operativo desconocido";
+			exit;
+		;;
+  esac
+	sudo flatpak update -y;
+}
+
+#alias osclear='sudo apt autoremove -y && sudo apt autoclean'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
