@@ -1,4 +1,5 @@
 " Habilitando Manejador de Pugins
+" Inside the Vim-Plug block on your .vimrc
 call plug#begin('~/.vim/plugged')
 
 " Syntax
@@ -17,7 +18,7 @@ Plug 'godlygeek/tabular' "For markdown syntax
 Plug 'preservim/vim-markdown' "For markdown syntax
 "Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'} " For ansible.
 "Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'} " For Nginx server lenguaje.
-" Inside the Vim-Plug block on your .vimrc
+" Docker
 Plug 'ekalinin/Dockerfile.vim' " Vim syntax file for Docker's Dockerfile and snippets for snipMate.
 
 " Nvim Tree
