@@ -43,8 +43,8 @@ Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
 ""PaperColor
 Plug 'NLKNguyen/papercolor-theme'
-""Nightfox
-Plug 'EdenEast/nightfox.nvim', { 'tag': 'v1.0.0' }
+""Tokyonight
+Plug 'folke/tokyonight.nvim'
 
 " Icons
 Plug 'ryanoasis/vim-devicons' " Iconos a mostrar en el panel de navegacion.

@@ -11,11 +11,16 @@
 "colorscheme PaperColor
 "let g:PaperColor_Theme_Options = { 'theme': { 'default.dark': { 'transparent_background': 1 } } }
 
-" Nightfox (nightfox,dayfox,dawnfox,duskfox,nordfox,terafox,carbonfox)
-"colorscheme nightfox 
-
 " Monokai.vim
-colorscheme monokai
+"colorscheme monokai
+
+" Tokyonight
+"colorscheme tokyonight
+"" There are also colorschemes for the different styles.
+"colorscheme tokyonight-night
+colorscheme tokyonight-storm
+"colorscheme tokyonight-day
+"colorscheme tokyonight-moon
 
 " ---------------------------------------------------------------------------------------------------------------
 " StatusBar config
