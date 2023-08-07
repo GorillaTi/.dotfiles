@@ -79,6 +79,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	tmux
+	copyfile
 	fzf
 	git
 	nmap
@@ -92,7 +93,6 @@ plugins=(
 	sudo
 	cp
 	dnf
-	zsh-interactive-cd
 	)
 
 source $ZSH/oh-my-zsh.sh
