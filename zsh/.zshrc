@@ -125,26 +125,41 @@ source $ZSH/oh-my-zsh.sh
 
 # Custon Aliases
 # Configuration bat
-alias cat="/usr/bin/bat"
-alias catn="/usr/bin/cat"
-alias catnl="/usr/bin/cat --paging=never"
+if [ -f /usr/bin/bat ] ;
+then
+	alias cat="/usr/bin/bat"
+	alias catn="/usr/bin/cat"
+	alias catnl="/usr/bin/cat --paging=never"
+else
+	alias cat="/usr/bin/cat"
+fi
 
 # Configuration lsd
-alias l='lsd -l --group-dirs=first'
-alias ll='lsd -lh --group-dirs=first'
-alias la='lsd -a --group-dirs=first'
-alias l='lsd --group-dirs=first'
-alias lla='lsd -lha --group-dirs=first'
-alias ls='lsd --group-dirs=first'
+if [ -f /usr/bin/lsd ] ;
+then
+	alias ls='lsd --group-dirs=first'
+	
+	# New
+	alias l='ls -l'
+	alias la='ls -a'
+	alias lla='ls -la'
+	alias lt='ls --tree'
+
+	# Old
+	#alias l='lsd -l --group-dirs=first'
+	#alias ll='lsd -lh --group-dirs=first'
+	#alias la='lsd -ha --group-dirs=first'
+	#alias lla='lsd -lha --group-dirs=first'
+fi
 
 # Alias de configuracio de servicios
-alias zshconfig='vim ~/.zshrc'
-alias vimconfig='vim ~/.vimrc'
-alias vimconfigplug='vim ~/.vim/plugins.vim'
-alias vimconfigplugconf='vim ~/.vim/plugins-config.vim'
-alias vimconfigmap='vim ~/.vim/maps.vim'
-alias p10kconfig='vim ~/.p10k.zsh'
-alias sshconfig='vim ~/.ssh/config'
+alias zsh-config='vim ~/.zshrc'
+alias vim-config='vim ~/.vimrc'
+alias vim-config-plug='vim ~/.vim/plugins.vim'
+alias vim-config-plug-conf='vim ~/.vim/plugins-config.vim'
+alias vim-config-map='vim ~/.vim/maps.vim'
+alias p10k-config='vim ~/.p10k.zsh'
+alias ssh-config='vim ~/.ssh/config'
        
 # Cleaning DNS cache
 alias dns-clear='sudo systemd-resolve --flush-cache'
@@ -162,7 +177,7 @@ fi
 alias update-fonts='sudo fc-cache -fv' 
 
 #Sesion Tmux
-alias tmuxsesion='tmux new -t tmux1'
+alias tmux-sesion='tmux new -t tmux1'
 
 # Custom Plugins
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
