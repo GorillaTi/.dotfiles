@@ -26,7 +26,19 @@ require('keymaps')                          -- keymaps
 ---------------------------------------------------------------------------------------------------
 require('plugins/packer')                   -- plugins manager
 
+-- UI
 require('plugins/ayu')                      -- color theme
 require('plugins/feline')                   -- statusline
 require('plugins/neo-tree')                 -- filebrowse
 require('plugins/gitsigns')                 -- git decorations
+--require('plugins/cokeline')                 -- buffers (tabs)
+require('plugins/sidebar-nvim')             -- sidebar
+require('plugins/vista')                    -- tag viewer
+
+--  Utils
+require('plugins/nvim-lspconfig')           -- LSP settings
+require('plugins/autosave')                 -- autosave
+require('plugins/nvim-autopairs')           -- autopairs
+require('plugins/luasnip')                  -- snippets
+require('plugins/nvim-cmp')                 -- autocomplete
+require('plugins/todo-comments')            -- comments

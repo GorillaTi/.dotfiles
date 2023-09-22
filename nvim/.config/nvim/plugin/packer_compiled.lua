@@ -74,6 +74,41 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["auto-save.nvim"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/auto-save.nvim",
+    url = "https://github.com/Pocco81/auto-save.nvim"
+  },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-spell"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/cmp-spell",
+    url = "https://github.com/f3fora/cmp-spell"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
   ["diffview.nvim"] = {
     loaded = true,
     path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/diffview.nvim",
@@ -83,6 +118,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/feline.nvim",
     url = "https://github.com/feline-nvim/feline.nvim"
+  },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
@@ -94,6 +134,22 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
+  },
+  ["lsp-colors.nvim"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim",
+    url = "https://github.com/folke/lsp-colors.nvim"
+  },
+  ["lsp-inlayhints.nvim"] = {
+    config = { "\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19lsp-inlayhints\frequire\0" },
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/lsp-inlayhints.nvim",
+    url = "https://github.com/lvimuser/lsp-inlayhints.nvim"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["neo-tree.nvim"] = {
     loaded = true,
@@ -110,10 +166,30 @@ _G.packer_plugins = {
     path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-cokeline"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/nvim-cokeline",
+    url = "https://github.com/noib3/nvim-cokeline"
+  },
   ["nvim-highlite"] = {
     loaded = true,
     path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/nvim-highlite",
     url = "https://github.com/Iron-E/nvim-highlite"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -134,6 +210,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/sidebar.nvim",
     url = "https://github.com/sidebar-nvim/sidebar.nvim"
+  },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
+  },
+  ["vim-doge"] = {
+    loaded = true,
+    path = "/home/sysadmin/.local/share/nvim/site/pack/packer/start/vim-doge",
+    url = "https://github.com/kkoomen/vim-doge"
   }
 }
 
@@ -142,6 +228,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
+-- Config for: lsp-inlayhints.nvim
+time([[Config for lsp-inlayhints.nvim]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19lsp-inlayhints\frequire\0", "config", "lsp-inlayhints.nvim")
+time([[Config for lsp-inlayhints.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

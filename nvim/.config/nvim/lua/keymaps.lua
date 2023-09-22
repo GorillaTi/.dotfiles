@@ -1,4 +1,4 @@
-----------------------------------------------------------
+---------------------------------------------------------
 -- Keymaps configuration file: keymaps of neovim
 -- and plugins.
 -----------------------------------------------------------
@@ -36,8 +36,30 @@ map('n', '<leader>q', ':q!<CR>', default_opts)
 -----------------------------------------------------------
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
--- nvim-tree
+-- Neovim
 map('n', '<C-n>', ':Neotree toggle<CR>', default_opts)       -- open/close
+-- nvim-tree
 --map('n', '<leader>r', ':NvimTreeRefresh<CR>', default_opts)  -- refresh
 --map('n', '<leader>n', ':NvimTreeFindFile<CR>', default_opts) -- search file
 
+-- cokeline
+map('n', '<S-Tab>',   '<Plug>(cokeline-focus-prev)',  { silent = true })
+map('n', '<Tab>',     '<Plug>(cokeline-focus-next)',  { silent = true })
+map('n', '<Leader>p', '<Plug>(cokeline-switch-prev)', { silent = true })
+map('n', '<Leader>n', '<Plug>(cokeline-switch-next)', { silent = true })
+
+for i = 1,9 do
+  map('n', ('<F%s>'):format(i),      ('<Plug>(cokeline-focus-%s)'):format(i),  { silent = true })
+  map('n', ('<Leader>%s'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), { silent = true })
+end
+
+--nvim-lazygit
+map('n', '<C-g>', ':LazyGit<CR>', default_opts)             -- open/close
+
+-- Vista tag-viewer
+map('n', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
+map('i', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
+map('n', '<leader>m', ':Vista!!<CR>', default_opts)
+
+map('n', '<leader>tf', ':Telescope file_browser<CR>', default_opts)
+map('n', '<leader>ts', ':Telescope symbols<CR>', default_opts)

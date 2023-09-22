@@ -23,6 +23,10 @@ return require('packer').startup(function(use)
     -- colorschemes
     use 'Shatur/neovim-ayu'
 
+    -- icons
+--    use 'kyazdani42/nvim-web-devicons'
+--    use 'adelarsq/vim-devicons-emoji'
+
     -- file explorer
     --use 'kyazdani42/nvim-tree.lua'
     
@@ -38,21 +42,22 @@ return require('packer').startup(function(use)
     }
     use 'sidebar-nvim/sidebar.nvim'
 
-     -- git labels
-     use {
-         'lewis6991/gitsigns.nvim',
-         requires = { 'nvim-lua/plenary.nvim' },
-         config = function()
-             require('gitsigns').setup()
-         end
-     }
-     -- help for git
-     use 'kdheepak/lazygit.nvim'
-     -- diffview
-     use {
-         'sindrets/diffview.nvim',
-         requires = 'nvim-lua/plenary.nvim'
-     }
+    -- git labels
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+    -- help for git
+    use 'kdheepak/lazygit.nvim'
+
+    -- diffview
+    use {
+        'sindrets/diffview.nvim',
+        requires = 'nvim-lua/plenary.nvim'
+    }
 
     -- statusline
     -- lualine
@@ -69,4 +74,69 @@ return require('packer').startup(function(use)
             'nvim-web-devicons'
         },
     }
+
+    -- cokeline - buffers
+    --use {
+    --    'noib3/nvim-cokeline',
+    --    requires = 'kyazdani42/nvim-web-devicons',
+    --}
+    -- TODO: remoxe
+    -- FIX: fix
+
+    -- LSP
+    use 'neovim/nvim-lspconfig'
+    use {
+        'lvimuser/lsp-inlayhints.nvim',
+        config = function()
+            require("lsp-inlayhints").setup()
+        end
+    }
+    
+    use 'folke/lsp-colors.nvim'
+    use {
+        'folke/trouble.nvim',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+        }
+    }
+    use 'kkoomen/vim-doge'
+
+     -- autosave
+    use "Pocco81/auto-save.nvim"
+
+    -- autopair
+    use 'windwp/nvim-autopairs'
+
+    -- autocomplete
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'L3MON4D3/LuaSnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'f3fora/cmp-spell',
+            'saadparwaiz1/cmp_luasnip',
+        },
+    }
+
+    use 'rafamadriz/friendly-snippets'
+    -- use {'tzachar/cmp-tabnine',
+    --      run='./install.sh',
+    --      requires = 'hrsh7th/nvim-cmp'
+    -- }
+    use {'onsails/lspkind-nvim'}
+
+    -- tagviewer
+    use 'liuchengxu/vista.vim'
+
+    -- Todo-comments
+    use {
+        "folke/todo-comments.nvim",
+        requires = {"nvim-lua/plenary.nvim"},  
+    }
+
+    -- Nvim-colorizer
+     use 'norcalli/nvim-colorizer.lua'
+     require'colorizer'.setup()
 end)
