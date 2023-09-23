@@ -5,7 +5,7 @@
 -- Plugin manager: packer.nvim
 -- https://github.com/wbthomason/packer.nvim
 
--- For information about installed plugins see the README
+--- For information about installed plugins see the README
 --- neovim-lua/README.md
 --- https://github.com/brainfucksec/neovim-lua#readme
 
@@ -137,6 +137,31 @@ return require('packer').startup(function(use)
     }
 
     -- Nvim-colorizer
-     use 'norcalli/nvim-colorizer.lua'
-     require'colorizer'.setup()
+    use {'norcalli/nvim-colorizer.lua'}
+
+    -- treesitter interface
+    use {'nvim-treesitter/nvim-treesitter'}
+    use {
+        'nvim-treesitter/nvim-tree-docs', 
+        requires = {'nvim-treesitter/nvim-treesitter'},
+    }
+    use {
+        'p00f/nvim-ts-rainbow',
+        requires = {'nvim-treesitter/nvim-treesitter'},
+    }
+
+    -- fuzzy finder
+    use 'nvim-lua/popup.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-telescope/telescope.nvim'
+    use 'nvim-telescope/telescope-ui-select.nvim'
+    use 'nvim-telescope/telescope-symbols.nvim'
+    use 'nvim-telescope/telescope-media-files.nvim'
+    use 'nvim-telescope/telescope-file-browser.nvim'
+    use 'nvim-telescope/telescope-dap.nvim'
+    use 'ibhagwan/fzf-lua'
+
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)

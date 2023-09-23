@@ -1,3 +1,10 @@
+-----------------------------------------------------------
+-- Luasnip configuration file
+-----------------------------------------------------------
+
+-- Plugin: luasnip
+-- https://github.com/L3MON4D3/LuaSnip
+
 local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet

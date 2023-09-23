@@ -1,3 +1,10 @@
+-----------------------------------------------------------
+-- Autosave configuration file
+-----------------------------------------------------------
+
+-- Plugin: autosave
+-- https://github.com/pocco81/auto-save.nvim
+
 require("auto-save").setup({
     enabled = true,
     execution_message = {

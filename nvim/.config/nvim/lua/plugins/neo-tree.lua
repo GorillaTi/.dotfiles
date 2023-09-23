@@ -1,3 +1,10 @@
+-----------------------------------------------------------
+-- Neo-tree configuration file
+-----------------------------------------------------------
+
+-- Plugin: neo-tree
+-- https://github.com/nvim-neo-tree/neo-tree.nvim
+
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 

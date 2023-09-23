@@ -15,10 +15,10 @@ local cmd = vim.cmd
 map('n', '<leader>c', ':nohl<CR>', default_opts)
 
 -- reload configuracion
-map('n', '<leader>r', ':source % <CR>', default_opts)
+map('n', '<leader>rs', ':source % <CR>', default_opts)
 
 -- reload luafile
-map('n', '<leader><C-r>', ':luafile % <CR>', default_opts)
+map('n', '<leader>rl', ':luafile % <CR>', default_opts)
 
 -- fast saving with <leader> and s
 map('n', '<leader>w', ':w<CR>', default_opts)
@@ -29,7 +29,7 @@ map('n', '<leader>x', ':x<CR>', default_opts)
 map('i', '<leader>x', '<C-c>:x<CR>', default_opts)
 
 -- close all windows and exit from neovim <leader> Ctrl and q
-map('n', '<leader><C-q>', ':quitall<CR>', default_opts)
+map('n', '<leader>qa', ':quitall<CR>', default_opts)
 -- close unsave windows and exit from neovim <leader> and q
 map('n', '<leader>q', ':q!<CR>', default_opts)
 
@@ -63,3 +63,24 @@ map('n', '<leader>m', ':Vista!!<CR>', default_opts)
 
 map('n', '<leader>tf', ':Telescope file_browser<CR>', default_opts)
 map('n', '<leader>ts', ':Telescope symbols<CR>', default_opts)
+
+-- on hesitation, bring up the panel
+map('n', '<C-s>', ':SidebarNvimToggle<CR>', default_opts)
+
+-- Trouble
+map("n", "<leader>zx", "<cmd>Trouble<CR>", {silent = true, noremap = true})
+map("n", "<leader>zw", "<cmd>Trouble workspace_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>zd", "<cmd>Trouble document_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>zl", "<cmd>Trouble loclist<CR>", {silent = true, noremap = true})
+map("n", "<leader>zq", "<cmd>Trouble quickfix<CR>", {silent = true, noremap = true})
+map("n", "gR", "<cmd>Trouble lsp_references<CR>", {silent = true, noremap = true})
+
+-- telescope-dap
+map('n', '<leader>dcc', '<cmd>lua require"telescope".extensions.dap.commands{}<CR>', default_opts)
+map('n', '<leader>dco', '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>', default_opts)
+map('n', '<leader>dlb', '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>', default_opts)
+map('n', '<leader>dv', '<cmd>lua require"telescope".extensions.dap.variables{}<CR>', default_opts)
+map('n', '<leader>df', '<cmd>lua require"telescope".extensions.dap.frames{}<CR>', default_opts)
+
+--nvim-fzf-lua
+map('n', '<C-p>', ':FzfLua files<CR>', default_opts)       -- open/close

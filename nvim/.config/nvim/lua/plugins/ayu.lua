@@ -1,3 +1,10 @@
+-----------------------------------------------------------
+-- Ayu theme configuration file
+-----------------------------------------------------------
+
+-- Plugin: ayu
+-- https://github.com/Shatur/neovim-ayu
+
 local cmd = vim.cmd
 local opt = vim.opt
 
