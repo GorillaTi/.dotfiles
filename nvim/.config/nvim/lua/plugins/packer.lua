@@ -1,12 +1,12 @@
 -----------------------------------------------------------
 -- Plugin manager configuration file
------------------------------------------------------------
+----------------------------------------------------------
 
 -- Plugin manager: packer.nvim
 -- https://github.com/wbthomason/packer.nvim
 
 --- For information about installed plugins see the README
---- neovim-lua/README.md
+--- neovim-lua/README.m2d
 --- https://github.com/brainfucksec/neovim-lua#readme
 
 local fn = vim.fn
@@ -28,19 +28,26 @@ return require('packer').startup(function(use)
 --    use 'adelarsq/vim-devicons-emoji'
 
     -- file explorer
-    --use 'kyazdani42/nvim-tree.lua'
-    
-    -- file explorer
     use {
         'nvim-neo-tree/neo-tree.nvim',
         branch = "v2.x",
         requires = {
             "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim"
         },
     }
     use 'sidebar-nvim/sidebar.nvim'
+
+    --FIX: Revisar configuraciones no  funciona
+
+    -- Tab-bar
+    use {
+        'nanozuki/tabby.nvim',
+        requires = {
+            'nvim-web-devicons',
+        },
+    }
 
     -- git labels
     use {
@@ -96,7 +103,7 @@ return require('packer').startup(function(use)
     use {
         'folke/trouble.nvim',
         requires = {
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
         }
     }
     use 'kkoomen/vim-doge'
@@ -106,6 +113,9 @@ return require('packer').startup(function(use)
 
     -- autopair
     use 'windwp/nvim-autopairs'
+
+    -- indent line
+    use 'lukas-reineke/indent-blankline.nvim'
 
     -- autocomplete
     use {

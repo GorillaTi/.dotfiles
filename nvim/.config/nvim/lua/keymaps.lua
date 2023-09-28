@@ -43,10 +43,22 @@ map('n', '<C-n>', ':Neotree toggle<CR>', default_opts)       -- open/close
 --map('n', '<leader>n', ':NvimTreeFindFile<CR>', default_opts) -- search file
 
 -- cokeline
-map('n', '<S-Tab>',   '<Plug>(cokeline-focus-prev)',  { silent = true })
-map('n', '<Tab>',     '<Plug>(cokeline-focus-next)',  { silent = true })
-map('n', '<Leader>p', '<Plug>(cokeline-switch-prev)', { silent = true })
-map('n', '<Leader>n', '<Plug>(cokeline-switch-next)', { silent = true })
+--map('n', '<S-Tab>',   '<Plug>(cokeline-focus-prev)',  { silent = true })
+--map('n', '<Tab>',     '<Plug>(cokeline-focus-next)',  { silent = true })
+--map('n', '<Leader>p', '<Plug>(cokeline-switch-prev)', { silent = true })
+--map('n', '<Leader>n', '<Plug>(cokeline-switch-next)', { silent = true })
+
+-- tabby
+vim.api.nvim_set_keymap("n", "<leader>ta", ":$tabnew<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tn", ":tabn<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tp", ":tabp<CR>", { noremap = true })
+-- move current tab to previous position
+vim.api.nvim_set_keymap("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
+-- move current tab to next position
+vim.api.nvim_set_keymap("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
+
 
 for i = 1,9 do
   map('n', ('<F%s>'):format(i),      ('<Plug>(cokeline-focus-%s)'):format(i),  { silent = true })

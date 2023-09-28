@@ -32,9 +32,11 @@ require('plugins/feline')                   -- statusline
 require('plugins/neo-tree')                 -- filebrowse
 require('plugins/gitsigns')                 -- git decorations
 --require('plugins/cokeline')                 -- buffers (tabs)
+require('plugins/tabby')                    -- Tabs
 require('plugins/sidebar-nvim')             -- sidebar
 require('plugins/vista')                    -- tag viewer
-require('plugins/colorizer')                    -- colorizer tags
+require('plugins/colorizer')                -- colorizer tags
+require('plugins/indent-blankline')         -- indentation
 
 --  Utils
 require('plugins/nvim-lspconfig')           -- LSP settings
