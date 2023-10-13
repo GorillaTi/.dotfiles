@@ -1,0 +1,3 @@
+[submodule "lazy-vim/.config/nvim"]
+	path = lazy-vim/.config/nvim
+	url = https://github.com/LazyVim/starter
