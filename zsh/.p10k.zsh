@@ -34,7 +34,7 @@
     # =========================[ Line #1 ]=========================
     os_icon                 # os identifier
     dir                     # current directory
-    vcs                     # git status
+    #vcs                     # git status
     status                  # exit code of the last command
     # =========================[ Line #2 ]=========================
     newline                 # \n
@@ -108,6 +108,7 @@
     # time                  # current time
     # =========================[ Line #2 ]=========================
     newline                 # \n
+    vcs                     # git status
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy

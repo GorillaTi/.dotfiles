@@ -140,9 +140,9 @@ then
 	alias ls='lsd --group-dirs=first'
 	
 	# New
-	alias l='ls -l'
+	alias l='ls -lh'
 	alias la='ls -a'
-	alias lla='ls -la'
+	alias lla='ls -lha'
 	alias lt='ls --tree'
 
 	# Old
@@ -244,10 +244,18 @@ os-upgrade () {
 			exit;
 		;;
   esac
+  echo "Actualizando paquetes flatpack"
 	sudo flatpak update -y;
+  echo "Actualizando paquetes Snap"
+  sudo snap refresh --list;
+  sudo snap refresh;
 }
 
 #alias osclear='sudo apt autoremove -y && sudo apt autoclean'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
