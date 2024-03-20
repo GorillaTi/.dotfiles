@@ -221,34 +221,38 @@ extract () {
 
 # Add this for update Operating System
 # alias os-upgrade='sudo apt update && sudo apt dist-upgrade -y'
+# or 'sudo dnf upgrade'
 os-upgrade () {
-	declare -a os_distro=( "Fedora" "RedHat" "CenOS" "AlmaLinux" "RockiLinux" "Debian" "Ubuntu" );
-	for i in ${os_distro[@]}; do
-		local distro=$(cat /etc/*-release | grep "NAME" | grep -o -m1 -i "$i");
-		if [ ! -z "$distro" ]; then
-			os=$distro;
-  		echo "Sistema Operativo indetificado como: $os"
-			break;
-		fi
+  declare -a os_distro=( "Fedora" "RedHat" "CenOS" "AlmaLinux" "RockiLinux" "Debian" "Ubuntu" );
+  for i in ${os_distro[@]}; do
+    local distro=$(cat /etc/*-release | grep "NAME" | grep -o -m1 -i "$i");
+    if [ ! -z "$distro" ]; then
+      os=$distro;
+      version=$(grep VERSION_ID /etc/os-release | awk -F '=' '{print $2}' | tr -d '"')
+      echo "Sistema Operativo indetificado como: $os $version" 
+      echo "Actualizando $os .........."
+      break;
+    fi
   done
   case $os in
-		Fedora | RedHat | CenOS | AlmaLinux | RockiLinux)
-			sudo dnf upgrade -y; 
-		;;
-		Debian | Ubuntu)
-			sudo apt upgrade;
-			sudo apt dist-upgrade -y;
-		;;
-		*)
-			echo "Sistema operativo desconocido";
-			exit;
-		;;
+    Fedora | RedHat | CenOS | AlmaLinux | RockiLinux)
+      sudo dnf upgrade -y; 
+    ;;
+    Debian | Ubuntu)
+      sudo apt upgrade;
+      sudo apt dist-upgrade -y;
+    ;;
+    *)
+      echo "Sistema operativo desconocido";
+      exit;
+    ;;
   esac
   echo "Actualizando paquetes flatpack"
-	sudo flatpak update -y;
+  sudo flatpak update -y;
   echo "Actualizando paquetes Snap"
   sudo snap refresh --list;
   sudo snap refresh;
+  echo "Su sistema operartivo $os $version esta actualizado"
 }
 
 #alias osclear='sudo apt autoremove -y && sudo apt autoclean'
