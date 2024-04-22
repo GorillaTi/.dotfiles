@@ -78,22 +78,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	tmux
-	copyfile
-	fzf
-	git
-	nmap
-	python
-	rsync
-	docker
-	docker-compose
-	ansible
-	terraform
-	vagrant
-	sudo
-	cp
-	dnf
-	)
+  aliases
+  history
+  tmux
+  fzf
+  git
+  nmap
+  python
+  rsync
+  docker
+  docker-compose
+  sudo
+  cp
+  dnf
+  zsh-interactive-cd
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+export LANG=es_ES.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -127,23 +127,22 @@ source $ZSH/oh-my-zsh.sh
 # Configuration bat
 if [ -f /usr/bin/bat ] ;
 then
-	alias cat="/usr/bin/bat"
-	alias catn="/usr/bin/cat"
-	alias catnl="/usr/bin/cat --paging=never"
+  alias cat="/usr/bin/bat"
+  alias catn="/usr/bin/cat"
+  alias catnl="/usr/bin/cat --paging=never"
 else
-	alias cat="/usr/bin/cat"
+  alias cat="/usr/bin/cat"
 fi
 
 # Configuration lsd
 if [ -f /usr/bin/lsd ] ;
 then
-	alias ls='lsd --group-dirs=first'
-	
+  alias ls='lsd --group-dirs=first'
 	# New
-	alias l='ls -lh'
-	alias la='ls -a'
-	alias lla='ls -lha'
-	alias lt='ls --tree'
+  alias l='ls -lh'
+  alias la='ls -a'
+  alias lla='ls -lha'
+  alias lt='ls --tree'
 
 	# Old
 	#alias l='lsd -l --group-dirs=first'
@@ -154,12 +153,22 @@ fi
 
 # Alias de configuracio de servicios
 alias zsh-config='vim ~/.zshrc'
-alias vim-config='vim ~/.vimrc'
-alias vim-config-plug='vim ~/.vim/plugins.vim'
-alias vim-config-plug-conf='vim ~/.vim/plugins-config.vim'
-alias vim-config-map='vim ~/.vim/maps.vim'
 alias p10k-config='vim ~/.p10k.zsh'
-alias ssh-config='vim ~/.ssh/config'
+# Alis de Configuracion de Vim con Packer
+if [[ -f ~/*.vimrc ]]; then
+  alias vim-config='vim ~/.vimrc'
+  if [[ -d ~/.vim ]]; then
+    alias vim-config-plug='vim ~/.vim/plugins.vim'
+    alias vim-config-plug-conf='vim ~/.vim/plugins-config.vim'
+    alias vim-config-map='vim ~/.vim/maps.vim'
+  fi
+fi
+# Alias de configuracion de ssh
+if [[ -d ~/.ssh/config.d ]]; then
+  alias ssh-config='vim ~/.ssh/config.d/'
+else
+  alias ssh-config='vim ~/.ssh/config'
+fi
        
 # Cleaning DNS cache
 alias dns-clear='sudo systemd-resolve --flush-cache'
@@ -167,17 +176,18 @@ alias dns-clear='sudo systemd-resolve --flush-cache'
 # Alias nvim with vim
 if [ -f /usr/bin/nvim ] ;
 then
-	alias vim='/usr/bin/nvim'
-	alias vimn='/usr/bin/vim' 
+  alias vim='/usr/bin/nvim'
+  alias vimn='/usr/bin/vim' 
 else
-	alias vim='/usr/bin/vim' 
+  alias vim='/usr/bin/vim' 
 fi
 
 # Alias update fonts
 alias update-fonts='sudo fc-cache -fv' 
 
-#Sesion Tmux
+# Tmux
 alias tmux-sesion='tmux new -t tmux1'
+alias tmux-conf='vim ~/.tmux.conf.local'
 
 # Custom Plugins
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -197,9 +207,9 @@ fpath+=~/.zfunc
 # Functions
 # Add this to easily extract compressed files, use extract <filename> to extract 
 extract () {
-	if [ -f $1  ] ; then
-		case $1 in
-			*.tar.bz2)	    tar xvjf $1    ;;
+  if [ -f $1  ] ; then
+    case $1 in
+    	*.tar.bz2)	    tar xvjf $1    ;;
       *.tar.gz)       tar xvzf $1    ;;
       *.tar.xz)       tar xf $1      ;;
       *.bz2)          bunzip2 $1     ;;
@@ -213,10 +223,10 @@ extract () {
       *.7z)           7z x $1        ;;
       *.zpaq)         zpaq x $1      ;;
       *)              echo "don't know how to extract '$1'..." ;;
-		esac
+    esac
   else
-		echo "'$1' is not a valid file!";
-	fi
+    echo "'$1' is not a valid file!";
+  fi
 }
 
 # Add this for update Operating System
@@ -263,3 +273,11 @@ os-upgrade () {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# To customize prompt, run `zsh-config` or edit ~/.zshrc
+function precmd() {
+  if [[ $1 == "vim" || $1 == "nano" ]]; then
+    source ~/.zshrc
+  fi
+}
