@@ -105,11 +105,11 @@ source $ZSH/oh-my-zsh.sh
 export LANG=es_ES.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -123,7 +123,9 @@ export LANG=es_ES.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# --------------------------------------------------------------------------------------------
 # Custon Aliases
+# --------------------------------------------------------------------------------------------
 # Configuration bat
 if [ -f /usr/bin/bat ] ;
 then
@@ -152,9 +154,16 @@ then
 fi
 
 # Alias de configuracio de servicios
+# --------------------------------------------------------------------------------------------
+# Alias configuracion ZSH
 alias zsh-config='vim ~/.zshrc'
+alias zsh-reload='source ~/.zshrc'
+
+# Alias configuracion Powerlevel10k
 alias p10k-config='vim ~/.p10k.zsh'
-# Alis de Configuracion de Vim con Packer
+alias p10k-reload='source ~/.p10k.zsh'
+
+# Alias de Configuracion de Vim con Packer
 if [[ -f ~/*.vimrc ]]; then
   alias vim-config='vim ~/.vimrc'
   if [[ -d ~/.vim ]]; then
@@ -163,18 +172,19 @@ if [[ -f ~/*.vimrc ]]; then
     alias vim-config-map='vim ~/.vim/maps.vim'
   fi
 fi
+
 # Alias de configuracion de ssh
 if [[ -d ~/.ssh/config.d ]]; then
   alias ssh-config='vim ~/.ssh/config.d/'
 else
   alias ssh-config='vim ~/.ssh/config'
 fi
-       
+
 # Cleaning DNS cache
 alias dns-clear='sudo systemd-resolve --flush-cache'
-       
+
 # Alias nvim with vim
-if [ -f /usr/bin/nvim ] ;
+if [ -f /opt/nvim-linux64/bin/nvim ] ;
 then
   alias vim='/usr/bin/nvim'
   alias vimn='/usr/bin/vim' 
@@ -204,7 +214,9 @@ zstyle ':completion:*' menu select
 
 fpath+=~/.zfunc
 
+# --------------------------------------------------------------------------------------------
 # Functions
+# --------------------------------------------------------------------------------------------
 # Add this to easily extract compressed files, use extract <filename> to extract 
 extract () {
   if [ -f $1  ] ; then
@@ -229,43 +241,93 @@ extract () {
   fi
 }
 
+# Clear RAM and SWAP
+cache-clear() {
+  su -l
+  /bin/free -m
+  /bin/sync
+  /sbin/sysctl -w vm.drop_caches=3
+  /bin/sleep 3
+  /sbin/sysctl -w vm.drop_caches=0
+  /bin/free -m
+}
+
 # Add this for update Operating System
 # alias os-upgrade='sudo apt update && sudo apt dist-upgrade -y'
 # or 'sudo dnf upgrade'
-os-upgrade () {
-  declare -a os_distro=( "Fedora" "RedHat" "CenOS" "AlmaLinux" "RockiLinux" "Debian" "Ubuntu" );
-  for i in ${os_distro[@]}; do
-    local distro=$(cat /etc/*-release | grep "NAME" | grep -o -m1 -i "$i");
-    if [ ! -z "$distro" ]; then
-      os=$distro;
-      version=$(grep VERSION_ID /etc/os-release | awk -F '=' '{print $2}' | tr -d '"')
-      echo "Sistema Operativo indetificado como: $os $version" 
-      echo "Actualizando $os .........."
-      break;
-    fi
-  done
-  case $os in
-    Fedora | RedHat | CenOS | AlmaLinux | RockiLinux)
-      sudo dnf upgrade -y; 
-    ;;
-    Debian | Ubuntu)
-      sudo apt upgrade;
-      sudo apt dist-upgrade -y;
-    ;;
-    *)
-      echo "Sistema operativo desconocido";
-      exit;
-    ;;
-  esac
-  echo "Actualizando paquetes flatpack"
-  sudo flatpak update -y;
-  echo "Actualizando paquetes Snap"
-  sudo snap refresh --list;
-  sudo snap refresh;
-  echo "Su sistema operartivo $os $version esta actualizado"
-}
+#os-update () {
+#  declare -a os_distro=( "Fedora" "RedHat" "CenOS" "AlmaLinux" "RockiLinux" "Debian" "Ubuntu" );
+#  for i in ${os_distro[@]}; do
+#    local distro=$(cat /etc/*-release | grep "NAME" | grep -o -m1 -i "$i");
+#    if [ ! -z "$distro" ]; then
+#      os=$distro;
+#      version=$(grep VERSION_ID /etc/os-release | awk -F '=' '{print $2}' | tr -d '"')
+#      echo "Sistema Operativo indetificado como: $os $version" 
+#      echo "Actualizando $os .........."
+#      break;
+#    fi
+#  done
+#  case $os in
+#    Fedora | RedHat | CenOS | AlmaLinux | RockiLinux)
+#      sudo dnf upgrade -y; 
+#    ;;
+#    Debian | Ubuntu)
+#      sudo apt upgrade;
+#      sudo apt dist-upgrade -y;
+#    ;;
+#    *)
+#      echo "Sistema operativo desconocido";
+#      exit;
+#    ;;
+#  esac
+#  echo "Actualizando paquetes flatpack"
+#  sudo flatpak update -y;
+#  echo "Actualizando paquetes Snap"
+#  sudo snap refresh --list;
+#  sudo snap refresh;
+#  echo "Su sistema operartivo $os $version esta actualizado"
+#}
 
-#alias osclear='sudo apt autoremove -y && sudo apt autoclean'
+# Add this for upgrade Operating System Fedora
+#os-upgrade () {
+#  declare -a os_distro=( "Fedora" "RedHat" "CenOS" "AlmaLinux" "RockiLinux" "Debian" "Ubuntu" );
+#  for i in ${os_distro[@]}; do
+#    local distro=$(cat /etc/*-release | grep "NAME" | grep -o -m1 -i "$i");
+#    if [ ! -z "$distro" ]; then
+#      os=$distro;
+#      version=$(grep VERSION_ID /etc/os-release | awk -F '=' '{print $2}' | tr -d '"')
+#      echo "Sistema Operativo indetificado como: $os $version" 
+#      break;
+#    fi
+#  done
+#  case $os in
+#    Fedora | RedHat | CenOS | AlmaLinux | RockiLinux)
+#      echo "Actualizacion de Version de $os"
+#
+#      echo "Limpiando Cache de Paquetes"
+#      sudo dnf clean all
+#      echo "Actualizando Paquetes"
+#      sudo dnf upgrade --refresh
+#      echo "Descargando los paquetes de actualizacion"
+#      sudo dnf system-upgrade download --releasever=40 --allowerasing
+#      echo "Reiniciando el sistema"
+#      sudo dnf system-upgrade reboot
+#    ;;
+#    Debian | Ubuntu)
+#      echo "Sistema opreativo $os NO soportado para Actualizacion de version"
+#    ;;
+#    *)
+#      echo "Sistema operativo desconocido";
+#      exit;
+#    ;;
+#  esac
+#}
+
+# Inclusion de directorios
+# Inclusion de .local/bin al PATH
+export PATH="$HOME/.local/bin:$PATH"
+# Inclusion neovim /opt
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
