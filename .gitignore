@@ -9,3 +9,6 @@ vim/.vim/pack/**
 ssh/
 ssh/*
 ssh/.ssh/*
+# exclude bakupfiles
+*.bkp
+*.orig
