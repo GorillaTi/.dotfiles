@@ -1,0 +1,39 @@
+#! /usr/bin/bash
+
+# Funcion de Actualizacion de version del Sistema Operativo
+os_upgrade () {
+  declare -a os_distro=( "Fedora" "RedHat" "CenOS" "AlmaLinux" "RockiLinux" "Debian" "Ubuntu" );
+  for i in ${os_distro[@]}; do
+    local distro=$(cat /etc/*-release | grep "NAME" | grep -o -m1 -i "$i");
+    if [ ! -z "$distro" ]; then
+      os=$distro;
+      version=$(grep VERSION_ID /etc/os-release | awk -F '=' '{print $2}' | tr -d '"')
+      echo "Sistema Operativo indetificado como: $os $version" 
+      break;
+    fi
+  done
+  case $os in
+    Fedora | RedHat | CenOS | AlmaLinux | RockiLinux)
+      echo "Actualizacion de Version de $os"
+
+#      echo "Limpiando Cache de Paquetes"
+#      sudo dnf clean all
+#      echo "Actualizando Paquetes"
+#      sudo dnf upgrade --refresh
+#      echo "Descargando los paquetes de actualizacion"
+#      sudo dnf system-upgrade download --releasever=40 --allowerasing
+#      echo "Reiniciando el sistema"
+#      sudo dnf system-upgrade reboot
+    ;;
+    Debian | Ubuntu)
+      echo "Sistema opreativo $os NO soportado para Actualizacion de version"
+    ;;
+    *)
+      echo "Sistema operativo desconocido";
+      exit;
+    ;;
+  esac
+}
+
+# Ejecucion del Script
+os_upgrade
